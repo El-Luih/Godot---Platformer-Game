@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://db7rwcm8oo17l"]
+
+[ext_resource type="Script" uid="uid://cqprywqulvjgq" path="res://scripts/gem_2.gd" id="1_m46px"]
+[ext_resource type="Shader" uid="uid://bg23c6lbfgbxb" path="res://shaders/player_character.gdshader" id="2_qycem"]
+[ext_resource type="Texture2D" uid="uid://nbyaifaeeyi8" path="res://assets/Sunny/Sunny-land-files/Assets/Misc/Sunnyland FX/Sprites/item-feedback/item-feedback-1.png" id="3_lavho"]
+[ext_resource type="Texture2D" uid="uid://bumvwxfjmgbc7" path="res://assets/Sunny/Sunny-land-files/Assets/Misc/Sunnyland FX/Sprites/item-feedback/item-feedback-2.png" id="4_gedcj"]
+[ext_resource type="Texture2D" uid="uid://de4a5bhao0ouw" path="res://assets/Sunny/Sunny-land-files/Assets/Misc/Sunnyland FX/Sprites/item-feedback/item-feedback-3.png" id="5_ustmj"]
+[ext_resource type="Texture2D" uid="uid://dpce1xvpotivl" path="res://assets/Sunny/Sunny-land-files/Assets/Misc/Sunnyland FX/Sprites/item-feedback/item-feedback-4.png" id="6_iipmt"]
+[ext_resource type="Texture2D" uid="uid://eproga4c5t0f" path="res://assets/Sunny/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-1.png" id="7_3ssgj"]
+[ext_resource type="Texture2D" uid="uid://bcbdwgiyqqydx" path="res://assets/Sunny/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-2.png" id="8_pb1m7"]
+[ext_resource type="Texture2D" uid="uid://b8abig14rdnwd" path="res://assets/Sunny/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-3.png" id="9_8a3qo"]
+[ext_resource type="Texture2D" uid="uid://cgxh52ix35iol" path="res://assets/Sunny/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-4.png" id="10_utnno"]
+[ext_resource type="Texture2D" uid="uid://b5lh4jvvy8pus" path="res://assets/Sunny/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-5.png" id="11_cni1q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ayej"]
+radius = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaf18"]
+shader = ExtResource("2_qycem")
+shader_parameter/tint_color = Color(0.8828125, 0.6753495, 0, 1)
+shader_parameter/brightness_multiplier = 1.2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ciqs3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lavho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gedcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ustmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_iipmt")
+}],
+"loop": 0,
+"name": &"collected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3ssgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pb1m7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8a3qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_utnno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cni1q")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Gem2" type="Area2D" unique_id=22091427]
+script = ExtResource("1_m46px")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2070744146]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_0ayej")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1809209451]
+material = SubResource("ShaderMaterial_oaf18")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ciqs3")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.5006492
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

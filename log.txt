@@ -1,0 +1,80 @@
+1. Oct 1, 2026 | 7:30 PM - 9:45 PM - Decided what the project should be (a timed arcade platformer where you collect as many gems as possible in 74 seconds while your health keeps draining) and compared Godot 4 with other engines. Installed Godot, created the project, and read the docs on scenes, nodes, and GDScript basics.
+
+2. Oct 1, 2026 | 10:00 PM - 11:15 PM - Set up the project folder structure, imported the sprites, tilesets, fonts, and audio, and configured the input actions I needed.
+
+3. Oct 2, 2026 | 4:00 PM - 6:15 PM - Built the player as a CharacterBody2D with a collision shape. Read about delta, get_gravity(), is_on_floor(), and move_and_slide(), then wrote gravity, jumping, and left/right movement with Input.get_axis().
+
+4. Oct 2, 2026 | 7:00 PM - 8:30 PM - Added the player's animations (idle, run, jump, fall, dead) with an AnimationPlayer, flipped the sprite depending on direction, and attached a Camera2D.
+
+5. Oct 3, 2026 | 10:00 AM - 12:30 PM - Built the first version of the level with a tileset and ground collision. Placed floating platforms in three height levels and tested jump distances so every platform could be reached.
+
+6. Oct 3, 2026 | 2:30 PM - 4:30 PM - Built the parallax background with four layers that move at different speeds. Scrolled it automatically with scroll_offset in _process() and reused it in the menu and the level.
+
+7. Oct 4, 2026 | 11:00 AM - 1:15 PM - Created the frog enemy scene with a body hitbox, an animated sprite (idle, jump, dead), and Area2D nodes for detection. Wrote the first chase logic using get_node() and a normalized direction vector.
+
+8. Oct 4, 2026 | 2:30 PM - 4:30 PM - Debugged the enemy:
+    - The "Player Detected" message never printed, so I checked the signal connection, the collision layers and masks, and the shape of the Area2D.
+    - The enemy wasn't falling because I never called move_and_slide().
+    - Compared checking the body's name with using groups.
+
+9. Oct 4, 2026 | 6:30 PM - 8:30 PM - Wrote the enemy combat:
+    - A small DamageHitbox that kills the enemy when the player lands on top.
+    - An AttackHitbox that hurts the player on contact.
+    - A death() function that waits for the dead animation to finish, with checks so it can't trigger twice.
+
+10. Oct 5, 2026 | 5:00 PM - 7:00 PM - Added the health system and the HUD. The health drains over the 74-second session, scaled by delta so it doesn't depend on frame rate, and is capped at 100. Added the HP label and made the player stop acting when the game is over.
+
+11. Oct 5, 2026 | 8:00 PM - 9:45 PM - Made the level 1 gems as Area2D nodes that give gold and play a collected animation. Compared deleting the gem with hiding it and turning off its collision, and chose hiding it with set_deferred() so the gems I had placed by hand stay in position. Used a tree timer to bring them back.
+
+12. Oct 6, 2026 | 4:30 PM - 6:30 PM - Made the level 2 and level 3 gems as separate scenes and scripts with higher values and longer respawn times. Placed them on platform rows with tighter and harder platforming, and tuned the layout by playing it.
+
+13. Oct 6, 2026 | 7:30 PM - 9:30 PM - Added cherries dropped by defeated enemies. Used preload() and instantiate() to create them, a group to find the container node, and add_child() to place them at the enemy's position. Cherries restore health and delete themselves after the collected animation.
+
+14. Oct 7, 2026 | 3:00 PM - 5:15 PM - Researched autoload scripts and created the Game script (health, gold, enemies defeated, game-over flag, and time left) and the Utilities script. Moved the global values out of the scenes, made the HP and gold labels read from them, and added a function to reset the stats.
+
+15. Oct 7, 2026 | 6:00 PM - 8:15 PM - Built the session timer:
+    - A Timer node that counts one second at a time.
+    - A time label formatted with two digits.
+    - A single gameOver() function that both endings (time out and no health) go through, with a check so it only runs once.
+    - A custom game_over_triggered signal that other scripts connect to.
+
+16. Oct 8, 2026 | 10:30 AM - 12:45 PM - Built the game over screen as a CanvasLayer with containers and labels for time left, final HP, enemies defeated, gold, and best score. When it appears it hides the in-game UI, stops the background music, and plays the game over music.
+
+17. Oct 8, 2026 | 2:00 PM - 4:00 PM - Built the main menu with the title, the Play and Quit buttons, the parallax background, and music. Wired the buttons to change scenes. Restart on the game over screen resets the stats and reloads the level, and Quit goes back to the menu.
+
+18. Oct 8, 2026 | 7:00 PM - 8:45 PM - Made enemies wander and respawn:
+    - Added a DirectionTimer so they alternate between moving in a random direction and waiting.
+    - Stopped the wandering when the chase starts and resumed it when the player leaves the chase range.
+    - On death, the enemy hides, turns off its hitboxes, and comes back after 6 seconds at its starting position.
+
+19. Oct 9, 2026 | 4:00 PM - 6:15 PM - Added best score saving with FileAccess and JSON. Found a bug: opening the file in WRITE mode erased it before I could read the old score. Rewrote it to read first and write only when the new score is higher, with loadBestScore() returning -1 when there is no save, and showed the best score on the game over screen.
+
+20. Oct 9, 2026 | 7:15 PM - 9:15 PM - Played several full sessions to balance the game:
+    - Enemy damage (30) versus the cherry heal (20).
+    - The health drain speed.
+    - Gem values and respawn times for each level.
+    - Platform spacing for the upper levels.
+
+21. Oct 10, 2026 | 11:00 AM - 1:15 PM - Polished the visuals of the title. Researched how to build a layered "afterimage" text effect by drawing the text several times with offsets, and worked on the display font and button styling.
+
+22. Oct 10, 2026 | 3:00 PM - 5:00 PM - Researched canvas_item shaders and wrote a monochrome tint shader that uses luminance, with a color uniform and a brightness slider. Tested it on the sprites.
+
+23. Oct 10, 2026 | 7:00 PM - 8:45 PM - Worked on audio and small fixes: background music, game over music, stopping the background music when the game ends, and fixing the order of the animation changes (run, jump, fall).
+
+24. Oct 11, 2026 | 12:00 PM - 2:15 PM - Cleaned up the project. Reviewed every script, removed repeated code, organized the scenes into folders (including the items), made the names consistent, and checked all the signal connections.
+
+25. Oct 11, 2026 | 4:00 PM - 6:15 PM - Decided on a documentation style (short # comments, docstrings for longer explanations, and "(ae)" for things already explained) and commented the player, enemy, gem, and UI scripts.
+
+26. Oct 12, 2026 | 3:00 PM - 5:30 PM - Exported the game as a .exe:
+    - Installed the export templates and turned on Embed PCK.
+    - Turned off Export With Debug.
+    - Found that res:// is read-only in an exported game, so I moved the save file to user://.
+    - Tested that the exported build saves the best score.
+
+27. Oct 13, 2026 | 4:00 PM - 5:17 PM - Reviewed all the scripts again, completed and corrected the comments, and checked that the code itself was unchanged.
+
+28. Oct 13, 2026 | 9:00 PM - 10:45 PM - Played full sessions on the exported build. Checked that restart resets everything, the best score persists after closing the game, and both endings (time out and no health) work. Checked that enemies and gems respawn.
+
+29. Oct 14, 2026 | 12:15 AM - 3:43 AM - Last round of testing. Played through the menu, the level, and the game over screen several times, recorded the two demo videos, and checked the restart and quit buttons. Finished testing at 3:43 AM.
+
+29. Oct 14, 2026 | 3:43 AM - 4:40 AM - Optimized file sizes, created GitHub repository, and comitted everything.

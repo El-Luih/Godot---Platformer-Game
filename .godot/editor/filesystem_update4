@@ -1,0 +1,3 @@
+res://scenes/parallax_background.tscn
+res://shaders/player_character.gdshader
+res://export_presets.cfg

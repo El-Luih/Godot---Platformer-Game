@@ -1,0 +1,195 @@
+[gd_scene format=3 uid="uid://bnj0aoyl0c811"]
+
+[ext_resource type="Script" uid="uid://dxjl032ywlfp8" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://dcej5mqstgfng" path="res://scenes/parallax_background.tscn" id="2_0wfyh"]
+[ext_resource type="FontFile" uid="uid://271miq3g5vb8" path="res://fonts/TrueType (.ttf)/Kaph-Regular.ttf" id="2_sugp2"]
+[ext_resource type="AudioStream" uid="uid://cg5ngco0k4wpa" path="res://soundtrack/Main_Menu.wav" id="4_jyhfs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wfyh"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.7529412, 0.20784314, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+shadow_color = Color(1, 0.34509805, 0.07058824, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.27058825, 0.0627451, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+shadow_color = Color(1, 0.29411766, 0, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sugp2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.76862746, 0.2627451, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+shadow_color = Color(1, 0.29411766, 0, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.27058825, 0.0627451, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+shadow_color = Color(1, 0.29411766, 0, 1)
+shadow_size = 5
+
+[node name="Main" type="Node2D" unique_id=1764159561]
+script = ExtResource("1_o5qli")
+
+[node name="Title" type="Control" parent="." unique_id=223956296]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 248.74536
+offset_top = 412.18695
+offset_right = 288.74536
+offset_bottom = 452.18695
+
+[node name="Label1" type="Label" parent="Title" unique_id=114046700]
+layout_mode = 0
+offset_left = 103.25464
+offset_top = -236.18695
+offset_right = 727.25464
+offset_bottom = -89.18695
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0.27058825, 0.0627451, 0, 1)
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_font_sizes/font_size = 40
+text = "TOTALLY GENERIC
+RETRO
+PLATFORMER!!!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Title" unique_id=1771179923]
+layout_mode = 0
+offset_left = 103.25464
+offset_top = -244.18695
+offset_right = 727.25464
+offset_bottom = -97.18695
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(1, 0.29546046, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_font_sizes/font_size = 40
+text = "TOTALLY GENERIC
+RETRO
+PLATFORMER!!!"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Title" unique_id=646393164]
+layout_mode = 0
+offset_left = 103.25464
+offset_top = -252.18695
+offset_right = 727.25464
+offset_bottom = -105.18695
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(1, 0.7546077, 0.20846611, 1)
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_font_sizes/font_size = 40
+text = "TOTALLY GENERIC
+RETRO
+PLATFORMER!!!"
+horizontal_alignment = 1
+
+[node name="Button1" type="Button" parent="." unique_id=1246471866]
+offset_left = 247.99998
+offset_top = 400.0
+offset_right = 448.0
+offset_bottom = 480.0
+rotation = -0.12217305
+pivot_offset_ratio = Vector2(0.5, 0)
+theme_override_colors/font_color = Color(0.32156864, 0.12941177, 0.07058824, 1)
+theme_override_colors/font_focus_color = Color(1, 0.34509805, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_0wfyh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jyhfs")
+text = "Play"
+
+[node name="Button2" type="Button" parent="." unique_id=1260840131]
+offset_left = 848.00006
+offset_top = 400.0
+offset_right = 1048.0
+offset_bottom = 480.0
+rotation = 0.12217305
+pivot_offset_ratio = Vector2(0.5, 0)
+theme_override_colors/font_color = Color(0.27058825, 0.0627451, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.29411766, 0, 1)
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_sugp2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tbgi4")
+text = "Quit
+"
+
+[node name="ParallaxBG" parent="." unique_id=613266716 instance=ExtResource("2_0wfyh")]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=897916998]
+stream = ExtResource("4_jyhfs")
+autoplay = true
+
+[node name="Creator" type="Control" parent="." unique_id=745774569]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label1" type="Label" parent="Creator" unique_id=744021679]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 337.0
+offset_right = 866.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(0.27058825, 0.0627451, 0, 1)
+theme_override_fonts/font = ExtResource("2_sugp2")
+text = "A game developed by Luis Maradiaga"
+
+[node name="Label2" type="Label" parent="Creator" unique_id=977231247]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 335.0
+offset_right = 866.0
+offset_bottom = 358.0
+theme_override_colors/font_color = Color(1, 0.76862746, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("2_sugp2")
+text = "A game developed by Luis Maradiaga"
+
+[node name="Label3" type="Label" parent="Creator" unique_id=2105745755]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 333.0
+offset_right = 866.0
+offset_bottom = 356.0
+theme_override_colors/font_color = Color(1, 0.29411766, 0, 1)
+theme_override_fonts/font = ExtResource("2_sugp2")
+text = "A game developed by Luis Maradiaga"
+
+[connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

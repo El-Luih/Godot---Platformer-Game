@@ -1,0 +1,770 @@
+[gd_scene format=4 uid="uid://dt7g47sqb32em"]
+
+[ext_resource type="Script" uid="uid://bv0odrqceqm74" path="res://scripts/world.gd" id="1_e3hyu"]
+[ext_resource type="AudioStream" uid="uid://bf3ake12awgk7" path="res://soundtrack/World.wav" id="1_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://dvoulg7ueypyf" path="res://scenes/player_character.tscn" id="2_fj7yv"]
+[ext_resource type="Texture2D" uid="uid://bd2vaejq6d6o" path="res://assets/Sunny/Sunny-land-files/Assets/environment/tileset.png" id="2_k0juu"]
+[ext_resource type="AudioStream" uid="uid://d15amlkggbd8d" path="res://soundtrack/Game_Over.wav" id="3_jhx03"]
+[ext_resource type="PackedScene" uid="uid://dcej5mqstgfng" path="res://scenes/parallax_background.tscn" id="4_71j4m"]
+[ext_resource type="FontFile" uid="uid://271miq3g5vb8" path="res://fonts/TrueType (.ttf)/Kaph-Regular.ttf" id="5_7r4gi"]
+[ext_resource type="Script" uid="uid://cqixt1uhpupi0" path="res://scripts/player_hp.gd" id="5_71j4m"]
+[ext_resource type="PackedScene" uid="uid://l4p32wr2yjqb" path="res://scenes/enemy_1.tscn" id="5_qfnet"]
+[ext_resource type="Script" uid="uid://c5pxctlf6wcfl" path="res://scripts/player_gold.gd" id="6_qfnet"]
+[ext_resource type="PackedScene" uid="uid://kstsuosr3bpy" path="res://scenes/items/gem.tscn" id="8_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://db7rwcm8oo17l" path="res://scenes/items/gem2.tscn" id="9_o8fc1"]
+[ext_resource type="PackedScene" uid="uid://0yyvgp3kl3c0" path="res://scenes/items/gem3.tscn" id="10_xo05s"]
+[ext_resource type="Script" uid="uid://b73u8lgsknavi" path="res://scripts/game_over.gd" id="12_q5onr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qfnet"]
+texture = ExtResource("2_k0juu")
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:1/0 = 0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -1.4388695, -8, -1.2590103, -8, -3.5971737)
+10:1/0 = 0
+10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -1.4388695, -8, -1.2590103, -8, -3.5971737)
+11:1/0 = 0
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+13:1/0 = 0
+13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:1/0 = 0
+14:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:1/0 = 0
+16:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -0.5395756, 8, 8, -2.877739, 8, -8, 8)
+17:1/0 = 0
+17:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.0791531, 8, 8, 8, 8, -2.877739, 8, -8, 8)
+19:1/0 = 0
+19:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, -0.17985725, 8, 8, -2.877739, 8, -8, 8)
+20:1/0 = 0
+20:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.71943474, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+22:1/0 = 0
+22:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -0.5395756, 8, 8, -2.877739, 8, -8, 8)
+23:1/0 = 0
+23:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.0791531, 8, 8, 8, 8, -2.877739, 8, -8, 8)
+13:2/0 = 0
+13:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:2/0 = 0
+14:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:2/0 = 0
+16:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+17:2/0 = 0
+17:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+19:2/0 = 0
+19:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+20:2/0 = 0
+20:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+22:2/0 = 0
+22:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+23:2/0 = 0
+23:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+8:3/0 = 0
+8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -1.2590103, -8, -1.2590103, -8, -2.877739)
+10:3/0 = 0
+10:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -1.2590103, -8, -1.2590103, -8, -2.877739)
+11:3/0 = 0
+11:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+14:4/0 = 0
+14:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -0.35971642, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+16:4/0 = 0
+16:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0, 0.17985916, 8, 8, -2.877739, 8, -8, 8)
+20:4/0 = 0
+20:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -0.35971642, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+22:4/0 = 0
+22:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0, 0.17985916, 8, 8, -2.877739, 8, -8, 8)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+8:5/0 = 0
+8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -1.2590103, -8, -1.2590103, -8, -2.877739)
+9:5/0 = 0
+9:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -1.2590103, -8, -1.2590103, -8, -2.877739)
+14:5/0 = 0
+14:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+16:5/0 = 0
+16:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+20:5/0 = 0
+20:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+22:5/0 = 0
+22:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+1:7/0 = 0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1583042, 0.17985916, 2.1583042, 8, 2.1583042, 8, 8, -0.71943474, 8, -8, 8)
+3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1583042, 0.17985916, 2.1583042, 8, 2.1583042, 8, 8, -0.71943474, 8, -8, 8)
+5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+7:7/0 = 0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+9:7/0 = 0
+9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -2.877739, 0.8992939, -3.057598, 8, -3.2374563, 8, 1.6187286, -2.5180225, 2.1583042, -8, 8)
+11:7/0 = 0
+11:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.13675, 8, -4.13675, 8, 8, 1.6187286, 2.5180225, -8, 2.5180225)
+15:7/0 = 0
+15:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+17:7/0 = 0
+17:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+19:7/0 = 0
+19:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+15:9/0 = 0
+15:9/0/modulate = Color(0.58011603, 0.46806425, 1.4205049, 1)
+15:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+17:9/0 = 0
+17:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+19:9/0 = 0
+19:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+1:10/0 = 0
+1:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -0.5395775, 5.036045, -6.115197, -0.35971642)
+2:10/0 = 0
+2:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -2.877739)
+4:10/0 = 0
+4:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -3.5971737)
+5:10/0 = 0
+5:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 5.036043, 0.8992939, -0.5395775, 5.036045, -8, 8)
+7:10/0 = 0
+7:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+10:10/0 = 0
+10:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.6547728, -8, 6.2950554, -8, 6.4749146, 8, -2.877739, 8, -6.4749146, 8)
+11:10/0 = 0
+11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.1067877, -4.873226, -3.451868, -8, 4.2640734, -8, 6.903738, -3.9594965, 7.0052624, 8, -7.0052624, 8)
+2:11/0 = 0
+2:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -0.5395775, 5.036045, -6.115197, -0.35971642)
+4:11/0 = 0
+4:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 5.036043, 0.8992939, -0.5395775, 5.036045, -8, 8)
+15:11/0 = 0
+15:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+17:11/0 = 0
+17:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+19:11/0 = 0
+19:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+7:13/0 = 0
+7:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.451868, -8, 4.2640734, -8, 8, -8, 8, 8, -8, 8)
+9:13/0 = 0
+9:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.451868, -8, 4.2640734, -8, 8, -8, 8, 8, -8, 8)
+11:13/0 = 0
+11:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.451868, -8, 4.2640734, -8, 8, -8, 8, 8, -8, 8)
+13:13/0 = 0
+13:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.451868, -8, 4.2640734, -8, 8, -8, 8, 8, -8, 8)
+7:14/0 = 0
+9:14/0 = 0
+9:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1583042, 0.17985916, 2.1583042, 8, 2.1583042, 8, 8, -0.71943474, 8, -8, 8)
+11:14/0 = 0
+11:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.0431495, -8, -3.451868, -8, 2.9800434, -8, 2.980043, -3.8969793, -0.8596277, 3.667745, -4.9747515, -4.162547)
+15:14/0 = 0
+15:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+17:14/0 = 0
+17:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+19:14/0 = 0
+19:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+1:15/0 = 0
+1:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, 0.5395756, 5.5756207, -4.6763277, 1.4388695, -8, -3.7770329)
+2:15/0 = 0
+2:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -8, 8, -8, 1.0791531)
+4:15/0 = 0
+4:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -8, 8, -8, 1.0791531)
+5:15/0 = 0
+5:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -1.4388695, 1.0791512, 4.856186, -8, 8, -8, -3.7770329)
+9:15/0 = 0
+2:16/0 = 0
+2:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -8, 8, -8, 1.0791531)
+4:16/0 = 0
+4:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -8, 8, -8, 1.0791531)
+11:16/0 = 0
+11:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+14:16/0 = 0
+14:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+15:16/0 = 0
+15:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+17:16/0 = 0
+17:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+18:16/0 = 0
+18:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+19:16/0 = 0
+19:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+1:17/0 = 0
+1:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.956893, -3.7770329, 1.8274593, -6.903737, 8, -8, 8, 8, -8, 8, -5.75548, 2.1583042)
+2:17/0 = 0
+2:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -8, 8, -8, 1.0791531)
+4:17/0 = 0
+4:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -8, 8, -8, 1.0791531)
+5:17/0 = 0
+5:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.978447, -6.4749136, 4.856186, -2.877739, 6.2950554, 3.057598, 8, 8, -8, 8, -8, -8)
+11:17/0 = 0
+11:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+14:17/0 = 0
+14:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+15:17/0 = 0
+15:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+1:18/0 = 0
+1:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -8, 8, -8, 1.0791531)
+2:18/0 = 0
+2:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -8, 8, -8, 1.0791531)
+4:18/0 = 0
+4:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -8, 8, -8, 1.0791531)
+5:18/0 = 0
+5:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.4388695, -8, 8, -8, 8, 8, -8, 8, -8, 1.0791531)
+10:18/0 = 0
+10:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+11:18/0 = 0
+11:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+12:18/0 = 0
+12:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+14:18/0 = 0
+14:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+15:18/0 = 0
+15:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+17:18/0 = 0
+17:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+19:18/0 = 0
+19:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+21:18/0 = 0
+21:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -2.877739, 8, -8, 8)
+1:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+9:20/0 = 0
+10:20/0 = 0
+11:20/0 = 0
+13:20/0 = 0
+14:20/0 = 0
+15:20/0 = 0
+17:20/0 = 0
+17:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.4173164, 1.0791531, 3.057598, 1.2590122, 2.877739, 4.856186, 3.2374573, 8, -0.71943474, 8, -3.2374573, 8, -3.2374573, 4.136751)
+3:21/0 = 0
+4:21/0 = 0
+9:21/0 = 0
+10:21/0 = 0
+11:21/0 = 0
+13:21/0 = 0
+14:21/0 = 0
+15:21/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_iun3i"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_qfnet")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ayej"]
+size = Vector2(2124, 220)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ayej"]
+bg_color = Color(0.27058825, 0.0627451, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.76862746, 0.2627451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8fc1"]
+bg_color = Color(1, 0.29411766, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.76862746, 0.2627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dss4m"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[node name="World" type="Node2D" unique_id=1026993827]
+script = ExtResource("1_e3hyu")
+
+[node name="TileLayers" type="Node2D" parent="." unique_id=1848324305]
+
+[node name="Layer0" type="TileMapLayer" parent="TileLayers" unique_id=1821083884]
+use_parent_material = true
+position = Vector2(-1, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAAATABIAAFAAAAEAAAATABIAAFAAAAIAAAATABIAAFAAAAMAAAATABIAAFAAAAQAAAATABIAAFAAAAUAAAATABIAAFAAAAYAAAATABIAAFAAAAcAAAATABIAAFAAAAgAAAATABIAAFAAAAkAAAATABIAAFAAAAoAAAATABIAAFAAAAsAAAATABIAAFAAAAwAAAATABIAAFAAAA0AAAATABIAAFAAAA4AAAATABIAAFAAAA8AAAATABIAAFAAABAAAAATABIAAFAAABEAAAATABIAAFAAABIAAAATABIAAFAAABMAAAATABIAAFAAABQAAAATABIAAFAAABUAAAATABIAAFAAABYAAAATABIAAFAAABcAAAATABIAAFAAABgAAAATABIAAFAAABkAAAATABIAAFAAABoAAAATABIAAFAAABsAAAATABIAAFAAABwAAAATABIAAFAAAB0AAAATABIAAFAAAB4AAAATABIAAFAAAB8AAAATABIAAFAAACAAAAATABIAAFAAACEAAAATABIAAFAAACIAAAATABIAAFAAACMAAAATABIAAFAAACQAAAATABIAAFAAACUAAAATABIAAFAAACYAAAATABIAAFB/AAAAAAATABIAAGB/AAEAAAATABIAAGB/AAIAAAATABIAAGB/AAMAAAATABIAAGB/AAQAAAATABIAAGB/AAUAAAATABIAAGB/AAYAAAATABIAAGB/AAcAAAATABIAAGB/AAgAAAATABIAAGB/AAkAAAATABIAAGB/AAoAAAATABIAAGB/AAsAAAATABIAAGB/AAwAAAATABIAAGB/AA0AAAATABIAAGB/AA4AAAATABIAAGB/AA8AAAATABIAAGB/ABAAAAATABIAAGB/ABEAAAATABIAAGB/ABIAAAATABIAAGB/ABMAAAATABIAAGB/ABQAAAATABIAAGB/ABUAAAATABIAAGB/ABYAAAATABIAAGB/ABcAAAATABIAAGB/ABgAAAATABIAAGB/ABkAAAATABIAAGB/ABoAAAATABIAAGB/ABsAAAATABIAAGB/ABwAAAATABIAAGB/AB0AAAATABIAAGB/AB4AAAATABIAAGB/AB8AAAATABIAAGB/ACAAAAATABIAAGB/ACEAAAATABIAAGB/ACIAAAATABIAAGB/ACMAAAATABIAAGB/ACQAAAATABIAAGB/ACUAAAATABIAAGB/ACYAAAATABIAAGABACIAAAAJAAEAAAACACIAAAAJAAEAAAADACIAAAAJAAEAAAAJAB4AAAAKAAEAAAAKAB4AAAAKAAEAAAALAB4AAAAKAAEAAAAMAB4AAAAKAAEAAAANAB4AAAAKAAEAAAAOAB4AAAAKAAEAAAAPAB4AAAAKAAEAAAAQAB4AAAAKAAEAAAARAB4AAAAKAAEAAAASAB4AAAAKAAEAAAATAB4AAAAKAAEAAAAUAB4AAAAKAAEAAAAVAB4AAAAKAAEAAAAWAB4AAAAKAAEAAAAXAB4AAAAKAAEAAAAYAB4AAAAKAAEAAAAhAB4AAAAKAAEAAAAiAB4AAAAKAAEAAAAjAB4AAAAKAAEAAAAkAB4AAAAKAAEAAAAlAB4AAAAKAAEAAAAmAB4AAAAKAAEAAAAnAB4AAAAKAAEAAAAoAB4AAAAKAAEAAAApAB4AAAAKAAEAAAAqAB4AAAAKAAEAAAArAB4AAAAKAAEAAAAsAB4AAAAKAAEAAAAtAB4AAAAKAAEAAAAuAB4AAAAKAAEAAAAvAB4AAAAKAAEAAAAwAB4AAAAKAAEAAAA5AB4AAAAKAAEAAAA6AB4AAAAKAAEAAAA7AB4AAAAKAAEAAAA8AB4AAAAKAAEAAAA9AB4AAAAKAAEAAAA+AB4AAAAKAAEAAAA/AB4AAAAKAAEAAABAAB4AAAAKAAEAAABBAB4AAAAKAAEAAABCAB4AAAAKAAEAAABDAB4AAAAKAAEAAABEAB4AAAAKAAEAAABFAB4AAAAKAAEAAABGAB4AAAAKAAEAAABHAB4AAAAKAAEAAABIAB4AAAAKAAEAAABRAB4AAAAKAAEAAABSAB4AAAAKAAEAAABTAB4AAAAKAAEAAABUAB4AAAAKAAEAAABVAB4AAAAKAAEAAABWAB4AAAAKAAEAAABXAB4AAAAKAAEAAABYAB4AAAAKAAEAAABZAB4AAAAKAAEAAABaAB4AAAAKAAEAAABbAB4AAAAKAAEAAABcAB4AAAAKAAEAAABdAB4AAAAKAAEAAABeAB4AAAAKAAEAAABfAB4AAAAKAAEAAABgAB4AAAAKAAEAAABpAB4AAAAKAAEAAABqAB4AAAAKAAEAAABrAB4AAAAKAAEAAABsAB4AAAAKAAEAAABtAB4AAAAKAAEAAABuAB4AAAAKAAEAAABvAB4AAAAKAAEAAABwAB4AAAAKAAEAAABxAB4AAAAKAAEAAAByAB4AAAAKAAEAAABzAB4AAAAKAAEAAAB0AB4AAAAKAAEAAAB1AB4AAAAKAAEAAAB2AB4AAAAKAAEAAAB3AB4AAAAKAAEAAAB4AB4AAAAKAAEAAAB+ACIAAAAKAAEAAAB9ACIAAAAKAAEAAAB8ACIAAAAKAAEAAABkACIAAAAKAAEAAABlACIAAAAKAAEAAABMACIAAAAKAAEAAABNACIAAAAKAAEAAABLACIAAAAKAAEAAABOACIAAAAKAAEAAABjACIAAAAKAAEAAABmACIAAAAKAAEAAAA0ACIAAAAKAAEAAAA1ACIAAAAKAAEAAAA2ACIAAAAKAAEAAAAzACIAAAAKAAEAAAAbACIAAAAKAAEAAAAcACIAAAAKAAEAAAAdACIAAAAKAAEAAAAeACIAAAAKAAEAAAAFABkAAAAJAAEAAAAEABkAAAAJAAEAAAANABQAAAAJAAEAAAAOABQAAAAJAAEAAAAPABQAAAAJAAEAAAAQABQAAAAJAAEAAAARABQAAAAJAAEAAAASABQAAAAJAAEAAAATABQAAAAJAAEAAAAUABQAAAAJAAEAAAAVABQAAAAJAAEAAAAWABQAAAAJAAEAAAAXABQAAAAJAAEAAAAYABQAAAAJAAEAAAAEACIAAAAJAAEAAAB7ACIAAAAJAAEAAAAlABQAAAAJAAEAAAAmABQAAAAJAAEAAAAnABQAAAAJAAEAAAAoABQAAAAJAAEAAAApABQAAAAJAAEAAAAqABQAAAAJAAEAAAArABQAAAAJAAEAAAAsABQAAAAJAAEAAAAtABQAAAAJAAEAAAAuABQAAAAJAAEAAAAvABQAAAAJAAEAAAAwABQAAAAJAAEAAAAfABkAAAAJAAEAAAAeABkAAAAJAAEAAAA9ABQAAAAJAAEAAAA+ABQAAAAJAAEAAAA/ABQAAAAJAAEAAABAABQAAAAJAAEAAABBABQAAAAJAAEAAABCABQAAAAJAAEAAABDABQAAAAJAAEAAABEABQAAAAJAAEAAABFABQAAAAJAAEAAABGABQAAAAJAAEAAABHABQAAAAJAAEAAABIABQAAAAJAAEAAABVABQAAAAJAAEAAABWABQAAAAJAAEAAABXABQAAAAJAAEAAABYABQAAAAJAAEAAABZABQAAAAJAAEAAABaABQAAAAJAAEAAABbABQAAAAJAAEAAABcABQAAAAJAAEAAABdABQAAAAJAAEAAABeABQAAAAJAAEAAABfABQAAAAJAAEAAABgABQAAAAJAAEAAABtABQAAAAJAAEAAABuABQAAAAJAAEAAABvABQAAAAJAAEAAABwABQAAAAJAAEAAABxABQAAAAJAAEAAAByABQAAAAJAAEAAABzABQAAAAJAAEAAAB0ABQAAAAJAAEAAAB2ABQAAAAJAAEAAAB3ABQAAAAJAAEAAAB4ABQAAAAJAAEAAAB1ABQAAAAJAAEAAAA2ABkAAAAJAAEAAAA3ABkAAAAJAAEAAABOABkAAAAJAAEAAABPABkAAAAJAAEAAABnABkAAAAJAAEAAABmABkAAAAJAAEAAAB8ABkAAAAJAAEAAAB9ABkAAAAJAAEAAAAAAP//AAAPAAkAAAAAAPT/AAAPAAkAAAAAAPX/AAAPAAkAAAAAAPb/AAAPAAkAAAAAAPf/AAAPAAkAAAAAAPj/AAAPAAkAAAAAAPn/AAAPAAkAAAAAAPr/AAAPAAkAAAAAAPv/AAAPAAkAAAAAAPz/AAAPAAkAAAAAAP3/AAAPAAkAAAAAAP7/AAAPAAkAAAB/AP//AAATABIAAGB/AP7/AAATABIAAGB/AP3/AAATABIAAGB/APz/AAATABIAAGB/APv/AAATABIAAGB/APT/AAATABIAAGB/APX/AAATABIAAGB/APb/AAATABIAAGB/APf/AAATABIAAGB/APj/AAATABIAAGB/APn/AAATABIAAGB/APr/AAATABIAAGABAA8AAAAKAAEAAAACAA8AAAAKAAEAAAAJAAoAAAAKAAEAAAAKAAoAAAAKAAEAAAABAAUAAAAKAAEAAAACAAUAAAAKAAEAAAAcAAUAAAAKAAEAAAAQAA8AAAAKAAEAAAARAA8AAAAKAAEAAAAoAA8AAAAKAAEAAAAWAAoAAAAKAAEAAAAiAAoAAAAKAAEAAAAjAAoAAAAKAAEAAAANAAAAAAAKAAEAAAAOAAAAAAAKAAEAAAAPAAAAAAAKAAEAAAAQAAAAAAAKAAEAAAARAAAAAAAKAAEAAAASAAAAAAAKAAEAAAATAAAAAAAKAAEAAAAMAAAAAAAKAAEAAAAlAAAAAAAKAAEAAAAmAAAAAAAKAAEAAAAnAAAAAAAKAAEAAAAoAAAAAAAKAAEAAAApAAAAAAAKAAEAAAAqAAAAAAAKAAEAAAAjAAAAAAAKAAEAAAAkAAAAAAAKAAEAAAA9AAAAAAAKAAEAAAA+AAAAAAAKAAEAAAA/AAAAAAAKAAEAAABAAAAAAAAKAAEAAABBAAAAAAAKAAEAAAA6AAAAAAAKAAEAAAA7AAAAAAAKAAEAAAA8AAAAAAAKAAEAAABVAAAAAAAKAAEAAABWAAAAAAAKAAEAAABXAAAAAAAKAAEAAABYAAAAAAAKAAEAAABRAAAAAAAKAAEAAABSAAAAAAAKAAEAAABTAAAAAAAKAAEAAABUAAAAAAAKAAEAAABtAAAAAAAKAAEAAABuAAAAAAAKAAEAAABvAAAAAAAKAAEAAABoAAAAAAAKAAEAAABpAAAAAAAKAAEAAABqAAAAAAAKAAEAAABrAAAAAAAKAAEAAABsAAAAAAAKAAEAAAAbAAUAAAAKAAEAAAAVAAoAAAAKAAEAAAAzAAUAAAAKAAEAAAAyAAUAAAAKAAEAAAAtAAoAAAAKAAEAAAAsAAoAAAAKAAEAAAAnAA8AAAAKAAEAAAA5AAoAAAAKAAEAAAA4AAoAAAAKAAEAAAA/AA8AAAAKAAEAAAA+AA8AAAAKAAEAAABKAAUAAAAKAAEAAABJAAUAAAAKAAEAAABEAAoAAAAKAAEAAABDAAoAAAAKAAEAAABQAAoAAAAKAAEAAABPAAoAAAAKAAEAAABWAA8AAAAKAAEAAABVAA8AAAAKAAEAAABbAAoAAAAKAAEAAABaAAoAAAAKAAEAAABhAAUAAAAKAAEAAABgAAUAAAAKAAEAAABnAAoAAAAKAAEAAABmAAoAAAAKAAEAAABtAA8AAAAKAAEAAABsAA8AAAAKAAEAAAB4AAUAAAAKAAEAAAByAAoAAAAKAAEAAABxAAoAAAAKAAEAAAB3AAUAAAAKAAEAAAB9AAoAAAAKAAEAAAB+AAoAAAAKAAEAAAB3AA8AAAAKAAEAAAB4AA8AAAAKAAEAAAA=")
+tile_set = SubResource("TileSet_iun3i")
+
+[node name="Sound" type="Node" parent="." unique_id=826761763]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="Sound" unique_id=499892213]
+stream = ExtResource("1_w7kh3")
+volume_db = -15.0
+autoplay = true
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="Sound" unique_id=659316675]
+stream = ExtResource("3_jhx03")
+volume_db = -20.0
+
+[node name="TimeLeft" type="Timer" parent="." unique_id=1509667181]
+one_shot = true
+autostart = true
+
+[node name="world_collision" type="StaticBody2D" parent="." unique_id=1232538150]
+
+[node name="world_floor" type="CollisionShape2D" parent="world_collision" unique_id=164573082]
+modulate = Color(0.033853278, 0.033853278, 0.033853274, 1)
+position = Vector2(986, 728)
+shape = SubResource("RectangleShape2D_0ayej")
+debug_color = Color(0, 0.47058824, 0.43137255, 0.39215687)
+
+[node name="world_floor2" type="CollisionShape2D" parent="world_collision" unique_id=487894855]
+modulate = Color(0.033853278, 0.033853278, 0.033853274, 1)
+position = Vector2(984, -304)
+shape = SubResource("RectangleShape2D_0ayej")
+debug_color = Color(0, 0.47058824, 0.43137255, 0.39215687)
+
+[node name="ParallaxBG" parent="." unique_id=613266716 instance=ExtResource("4_71j4m")]
+
+[node name="Player" type="Node2D" parent="." unique_id=999588925]
+
+[node name="player_character" parent="Player" unique_id=634080077 instance=ExtResource("2_fj7yv")]
+position = Vector2(56, 496)
+
+[node name="Mobs" type="Node2D" parent="." unique_id=1046902181]
+
+[node name="enemy_1" parent="Mobs" unique_id=1907016895 instance=ExtResource("5_qfnet")]
+position = Vector2(648, 592)
+
+[node name="enemy_3" parent="Mobs" unique_id=1988971242 instance=ExtResource("5_qfnet")]
+position = Vector2(384, 592)
+
+[node name="enemy_4" parent="Mobs" unique_id=1463735216 instance=ExtResource("5_qfnet")]
+position = Vector2(504, 592)
+
+[node name="enemy_5" parent="Mobs" unique_id=1819379241 instance=ExtResource("5_qfnet")]
+position = Vector2(784, 592)
+
+[node name="enemy_6" parent="Mobs" unique_id=47796749 instance=ExtResource("5_qfnet")]
+position = Vector2(1000, 592)
+
+[node name="enemy_7" parent="Mobs" unique_id=506933291 instance=ExtResource("5_qfnet")]
+position = Vector2(1136, 592)
+
+[node name="enemy_8" parent="Mobs" unique_id=608424915 instance=ExtResource("5_qfnet")]
+position = Vector2(1312, 592)
+
+[node name="enemy_9" parent="Mobs" unique_id=828287375 instance=ExtResource("5_qfnet")]
+position = Vector2(1552, 592)
+
+[node name="enemy_10" parent="Mobs" unique_id=30480071 instance=ExtResource("5_qfnet")]
+position = Vector2(1704, 592)
+
+[node name="enemy_11" parent="Mobs" unique_id=1797235062 instance=ExtResource("5_qfnet")]
+position = Vector2(1968, 592)
+
+[node name="enemy_12" parent="Mobs" unique_id=2030805563 instance=ExtResource("5_qfnet")]
+position = Vector2(1840, 592)
+
+[node name="Collectables" type="Node2D" parent="." unique_id=204262383]
+
+[node name="Cherries" type="Node2D" parent="Collectables" unique_id=685582398 groups=["cherries_container"]]
+position = Vector2(474, 485.5)
+
+[node name="Gems" type="Node2D" parent="Collectables" unique_id=1535548758]
+position = Vector2(312, 400)
+
+[node name="Gem1s" type="Node2D" parent="Collectables/Gems" unique_id=1210452223]
+
+[node name="Gem" parent="Collectables/Gems/Gem1s" unique_id=22091427 instance=ExtResource("8_7r4gi")]
+position = Vector2(-152, 72)
+
+[node name="Gem2" parent="Collectables/Gems/Gem1s" unique_id=722472067 instance=ExtResource("8_7r4gi")]
+position = Vector2(-120, 72)
+
+[node name="Gem3" parent="Collectables/Gems/Gem1s" unique_id=1472335286 instance=ExtResource("8_7r4gi")]
+position = Vector2(-88, 72)
+
+[node name="Gem4" parent="Collectables/Gems/Gem1s" unique_id=617715322 instance=ExtResource("8_7r4gi")]
+position = Vector2(-56, 72)
+
+[node name="Gem5" parent="Collectables/Gems/Gem1s" unique_id=1619924010 instance=ExtResource("8_7r4gi")]
+position = Vector2(-24, 72)
+
+[node name="Gem6" parent="Collectables/Gems/Gem1s" unique_id=1234165599 instance=ExtResource("8_7r4gi")]
+position = Vector2(8, 72)
+
+[node name="Gem7" parent="Collectables/Gems/Gem1s" unique_id=1868198946 instance=ExtResource("8_7r4gi")]
+position = Vector2(40, 72)
+
+[node name="Gem8" parent="Collectables/Gems/Gem1s" unique_id=1589155192 instance=ExtResource("8_7r4gi")]
+position = Vector2(72, 72)
+
+[node name="Gem9" parent="Collectables/Gems/Gem1s" unique_id=205803411 instance=ExtResource("8_7r4gi")]
+position = Vector2(232, 72)
+
+[node name="Gem10" parent="Collectables/Gems/Gem1s" unique_id=1130298573 instance=ExtResource("8_7r4gi")]
+position = Vector2(264, 72)
+
+[node name="Gem11" parent="Collectables/Gems/Gem1s" unique_id=645879996 instance=ExtResource("8_7r4gi")]
+position = Vector2(296, 72)
+
+[node name="Gem12" parent="Collectables/Gems/Gem1s" unique_id=40940595 instance=ExtResource("8_7r4gi")]
+position = Vector2(328, 72)
+
+[node name="Gem13" parent="Collectables/Gems/Gem1s" unique_id=1728548703 instance=ExtResource("8_7r4gi")]
+position = Vector2(360, 72)
+
+[node name="Gem14" parent="Collectables/Gems/Gem1s" unique_id=1312236983 instance=ExtResource("8_7r4gi")]
+position = Vector2(392, 72)
+
+[node name="Gem15" parent="Collectables/Gems/Gem1s" unique_id=1329259641 instance=ExtResource("8_7r4gi")]
+position = Vector2(424, 72)
+
+[node name="Gem16" parent="Collectables/Gems/Gem1s" unique_id=619416203 instance=ExtResource("8_7r4gi")]
+position = Vector2(456, 72)
+
+[node name="Gem17" parent="Collectables/Gems/Gem1s" unique_id=1893126765 instance=ExtResource("8_7r4gi")]
+position = Vector2(616, 72)
+
+[node name="Gem18" parent="Collectables/Gems/Gem1s" unique_id=382608517 instance=ExtResource("8_7r4gi")]
+position = Vector2(648, 72)
+
+[node name="Gem19" parent="Collectables/Gems/Gem1s" unique_id=1936555033 instance=ExtResource("8_7r4gi")]
+position = Vector2(680, 72)
+
+[node name="Gem20" parent="Collectables/Gems/Gem1s" unique_id=1464713010 instance=ExtResource("8_7r4gi")]
+position = Vector2(712, 72)
+
+[node name="Gem21" parent="Collectables/Gems/Gem1s" unique_id=1909557984 instance=ExtResource("8_7r4gi")]
+position = Vector2(744, 72)
+
+[node name="Gem22" parent="Collectables/Gems/Gem1s" unique_id=32223334 instance=ExtResource("8_7r4gi")]
+position = Vector2(776, 72)
+
+[node name="Gem23" parent="Collectables/Gems/Gem1s" unique_id=1188424372 instance=ExtResource("8_7r4gi")]
+position = Vector2(808, 72)
+
+[node name="Gem24" parent="Collectables/Gems/Gem1s" unique_id=1684280796 instance=ExtResource("8_7r4gi")]
+position = Vector2(840, 72)
+
+[node name="Gem25" parent="Collectables/Gems/Gem1s" unique_id=437111327 instance=ExtResource("8_7r4gi")]
+position = Vector2(1000, 72)
+
+[node name="Gem26" parent="Collectables/Gems/Gem1s" unique_id=146145112 instance=ExtResource("8_7r4gi")]
+position = Vector2(1032, 72)
+
+[node name="Gem27" parent="Collectables/Gems/Gem1s" unique_id=56636 instance=ExtResource("8_7r4gi")]
+position = Vector2(1064, 72)
+
+[node name="Gem28" parent="Collectables/Gems/Gem1s" unique_id=2085188436 instance=ExtResource("8_7r4gi")]
+position = Vector2(1096, 72)
+
+[node name="Gem29" parent="Collectables/Gems/Gem1s" unique_id=1000241 instance=ExtResource("8_7r4gi")]
+position = Vector2(1128, 72)
+
+[node name="Gem30" parent="Collectables/Gems/Gem1s" unique_id=1973644768 instance=ExtResource("8_7r4gi")]
+position = Vector2(1160, 72)
+
+[node name="Gem31" parent="Collectables/Gems/Gem1s" unique_id=1242957514 instance=ExtResource("8_7r4gi")]
+position = Vector2(1192, 72)
+
+[node name="Gem32" parent="Collectables/Gems/Gem1s" unique_id=284513627 instance=ExtResource("8_7r4gi")]
+position = Vector2(1224, 72)
+
+[node name="Gem33" parent="Collectables/Gems/Gem1s" unique_id=1738956669 instance=ExtResource("8_7r4gi")]
+position = Vector2(1384, 72)
+
+[node name="Gem34" parent="Collectables/Gems/Gem1s" unique_id=2086299315 instance=ExtResource("8_7r4gi")]
+position = Vector2(1416, 72)
+
+[node name="Gem35" parent="Collectables/Gems/Gem1s" unique_id=1260682968 instance=ExtResource("8_7r4gi")]
+position = Vector2(1448, 72)
+
+[node name="Gem36" parent="Collectables/Gems/Gem1s" unique_id=975310528 instance=ExtResource("8_7r4gi")]
+position = Vector2(1480, 72)
+
+[node name="Gem37" parent="Collectables/Gems/Gem1s" unique_id=1113410607 instance=ExtResource("8_7r4gi")]
+position = Vector2(1512, 72)
+
+[node name="Gem38" parent="Collectables/Gems/Gem1s" unique_id=1800933349 instance=ExtResource("8_7r4gi")]
+position = Vector2(1544, 72)
+
+[node name="Gem39" parent="Collectables/Gems/Gem1s" unique_id=107363575 instance=ExtResource("8_7r4gi")]
+position = Vector2(1576, 72)
+
+[node name="Gem40" parent="Collectables/Gems/Gem1s" unique_id=1631625528 instance=ExtResource("8_7r4gi")]
+position = Vector2(1608, 72)
+
+[node name="Gem2s" type="Node2D" parent="Collectables/Gems" unique_id=681517501]
+
+[node name="Gem1" parent="Collectables/Gems/Gem2s" unique_id=1037206302 instance=ExtResource("9_o8fc1")]
+position = Vector2(-48, -128)
+
+[node name="Gem2" parent="Collectables/Gems/Gem2s" unique_id=1441689072 instance=ExtResource("9_o8fc1")]
+position = Vector2(-88, -128)
+
+[node name="Gem3" parent="Collectables/Gems/Gem2s" unique_id=126574521 instance=ExtResource("9_o8fc1")]
+position = Vector2(32, -128)
+
+[node name="Gem4" parent="Collectables/Gems/Gem2s" unique_id=1132516939 instance=ExtResource("9_o8fc1")]
+position = Vector2(72, -128)
+
+[node name="Gem5" parent="Collectables/Gems/Gem2s" unique_id=828337420 instance=ExtResource("9_o8fc1")]
+position = Vector2(336, -128)
+
+[node name="Gem6" parent="Collectables/Gems/Gem2s" unique_id=943358171 instance=ExtResource("9_o8fc1")]
+position = Vector2(296, -128)
+
+[node name="Gem7" parent="Collectables/Gems/Gem2s" unique_id=1231629071 instance=ExtResource("9_o8fc1")]
+position = Vector2(416, -128)
+
+[node name="Gem8" parent="Collectables/Gems/Gem2s" unique_id=268667709 instance=ExtResource("9_o8fc1")]
+position = Vector2(456, -128)
+
+[node name="Gem9" parent="Collectables/Gems/Gem2s" unique_id=731161511 instance=ExtResource("9_o8fc1")]
+position = Vector2(720, -128)
+
+[node name="Gem10" parent="Collectables/Gems/Gem2s" unique_id=629663574 instance=ExtResource("9_o8fc1")]
+position = Vector2(680, -128)
+
+[node name="Gem11" parent="Collectables/Gems/Gem2s" unique_id=341682414 instance=ExtResource("9_o8fc1")]
+position = Vector2(800, -128)
+
+[node name="Gem12" parent="Collectables/Gems/Gem2s" unique_id=842295934 instance=ExtResource("9_o8fc1")]
+position = Vector2(840, -128)
+
+[node name="Gem13" parent="Collectables/Gems/Gem2s" unique_id=50707141 instance=ExtResource("9_o8fc1")]
+position = Vector2(1104, -128)
+
+[node name="Gem14" parent="Collectables/Gems/Gem2s" unique_id=69879059 instance=ExtResource("9_o8fc1")]
+position = Vector2(1064, -128)
+
+[node name="Gem15" parent="Collectables/Gems/Gem2s" unique_id=1179545564 instance=ExtResource("9_o8fc1")]
+position = Vector2(1184, -128)
+
+[node name="Gem16" parent="Collectables/Gems/Gem2s" unique_id=1544164942 instance=ExtResource("9_o8fc1")]
+position = Vector2(1224, -128)
+
+[node name="Gem17" parent="Collectables/Gems/Gem2s" unique_id=1817695838 instance=ExtResource("9_o8fc1")]
+position = Vector2(1488, -128)
+
+[node name="Gem18" parent="Collectables/Gems/Gem2s" unique_id=1500196287 instance=ExtResource("9_o8fc1")]
+position = Vector2(1448, -128)
+
+[node name="Gem19" parent="Collectables/Gems/Gem2s" unique_id=1580299832 instance=ExtResource("9_o8fc1")]
+position = Vector2(1568, -128)
+
+[node name="Gem20" parent="Collectables/Gems/Gem2s" unique_id=1408627686 instance=ExtResource("9_o8fc1")]
+position = Vector2(1608, -128)
+
+[node name="Gem3s" type="Node2D" parent="Collectables/Gems" unique_id=1991661948]
+
+[node name="Gem1" parent="Collectables/Gems/Gem3s" unique_id=437141523 instance=ExtResource("10_xo05s")]
+position = Vector2(8, -496)
+
+[node name="Gem2" parent="Collectables/Gems/Gem3s" unique_id=8173669 instance=ExtResource("10_xo05s")]
+position = Vector2(80, -496)
+
+[node name="Gem3" parent="Collectables/Gems/Gem3s" unique_id=1764939825 instance=ExtResource("10_xo05s")]
+position = Vector2(160, -496)
+
+[node name="Gem4" parent="Collectables/Gems/Gem3s" unique_id=72502872 instance=ExtResource("10_xo05s")]
+position = Vector2(232, -496)
+
+[node name="Gem5" parent="Collectables/Gems/Gem3s" unique_id=1028292195 instance=ExtResource("10_xo05s")]
+position = Vector2(384, -496)
+
+[node name="Gem6" parent="Collectables/Gems/Gem3s" unique_id=2134631691 instance=ExtResource("10_xo05s")]
+position = Vector2(456, -496)
+
+[node name="Gem7" parent="Collectables/Gems/Gem3s" unique_id=1268504081 instance=ExtResource("10_xo05s")]
+position = Vector2(536, -496)
+
+[node name="Gem8" parent="Collectables/Gems/Gem3s" unique_id=1723077453 instance=ExtResource("10_xo05s")]
+position = Vector2(608, -496)
+
+[node name="Gem9" parent="Collectables/Gems/Gem3s" unique_id=962801670 instance=ExtResource("10_xo05s")]
+position = Vector2(752, -496)
+
+[node name="Gem10" parent="Collectables/Gems/Gem3s" unique_id=1547995256 instance=ExtResource("10_xo05s")]
+position = Vector2(824, -496)
+
+[node name="Gem11" parent="Collectables/Gems/Gem3s" unique_id=214222496 instance=ExtResource("10_xo05s")]
+position = Vector2(904, -496)
+
+[node name="Gem12" parent="Collectables/Gems/Gem3s" unique_id=718815580 instance=ExtResource("10_xo05s")]
+position = Vector2(976, -496)
+
+[node name="Gem13" parent="Collectables/Gems/Gem3s" unique_id=1721251061 instance=ExtResource("10_xo05s")]
+position = Vector2(1112, -496)
+
+[node name="Gem14" parent="Collectables/Gems/Gem3s" unique_id=867522353 instance=ExtResource("10_xo05s")]
+position = Vector2(1184, -496)
+
+[node name="Gem15" parent="Collectables/Gems/Gem3s" unique_id=1719813929 instance=ExtResource("10_xo05s")]
+position = Vector2(1264, -496)
+
+[node name="Gem16" parent="Collectables/Gems/Gem3s" unique_id=138059527 instance=ExtResource("10_xo05s")]
+position = Vector2(1336, -496)
+
+[node name="InGameUI" type="CanvasLayer" parent="." unique_id=874890052]
+
+[node name="PlayerHP" type="Label" parent="InGameUI" unique_id=1703477519]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 171.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.73828125, 0, 0.019687481, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.76862746, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("5_7r4gi")
+theme_override_font_sizes/font_size = 32
+script = ExtResource("5_71j4m")
+
+[node name="PlayerGold" type="Label" parent="InGameUI" unique_id=778468396]
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 171.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(1.224127, 0.7343954, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.765625, 0, 0.020416647, 1)
+theme_override_fonts/font = ExtResource("5_7r4gi")
+theme_override_font_sizes/font_size = 32
+script = ExtResource("6_qfnet")
+
+[node name="PlayerTime" type="Label" parent="InGameUI" unique_id=1418185755]
+offset_left = 568.0
+offset_top = 8.0
+offset_right = 715.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(1.1998221, 1.224, 1.1940492, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_7r4gi")
+theme_override_font_sizes/font_size = 32
+
+[node name="GameOver" type="CanvasLayer" parent="." unique_id=135798536]
+layer = 2
+script = ExtResource("12_q5onr")
+
+[node name="ColorRect" type="ColorRect" parent="GameOver" unique_id=431943048]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6666667)
+
+[node name="PanelContainer" type="PanelContainer" parent="GameOver/ColorRect" unique_id=385765610]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -222.5
+offset_right = 296.0
+offset_bottom = 222.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ayej")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver/ColorRect/PanelContainer" unique_id=1597197443]
+layout_mode = 2
+theme_override_constants/margin_top = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/ColorRect/PanelContainer/MarginContainer" unique_id=287205206]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="GameOverLabel" type="Label" parent="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=681549819]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.76862746, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("5_7r4gi")
+theme_override_font_sizes/font_size = 46
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="TimeLeft" type="Label" parent="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=1632425112]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.76862746, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("5_7r4gi")
+theme_override_font_sizes/font_size = 18
+text = "Time Left:"
+horizontal_alignment = 1
+
+[node name="HealthLeft" type="Label" parent="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=1649201115]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.76862746, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("5_7r4gi")
+theme_override_font_sizes/font_size = 18
+text = "Health Left:"
+horizontal_alignment = 1
+
+[node name="EnemyScore" type="Label" parent="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=1325553282]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.76862746, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("5_7r4gi")
+theme_override_font_sizes/font_size = 18
+text = "Enemies Defeated:"
+horizontal_alignment = 1
+
+[node name="ScoreVBox" type="VBoxContainer" parent="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=372600411]
+layout_mode = 2
+
+[node name="FinalScore" type="Label" parent="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer/ScoreVBox" unique_id=1408960234]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95580584, 0.98895144, 1)
+theme_override_fonts/font = ExtResource("5_7r4gi")
+theme_override_font_sizes/font_size = 30
+text = "Final Score:"
+horizontal_alignment = 1
+
+[node name="BestScore" type="Label" parent="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer/ScoreVBox" unique_id=161134518]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.76862746, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("5_7r4gi")
+theme_override_font_sizes/font_size = 18
+text = "Best Score:"
+horizontal_alignment = 1
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=2013554982]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 31
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBox" unique_id=750230386]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.27058825, 0.0627451, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_7r4gi")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_o8fc1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dss4m")
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBox" unique_id=603603348]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.27058825, 0.0627451, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_7r4gi")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_o8fc1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dss4m")
+text = "Quit"
+
+[connection signal="timeout" from="TimeLeft" to="." method="_on_time_left_timeout"]
+[connection signal="pressed" from="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBox/RestartButton" to="GameOver" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOver/ColorRect/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBox/QuitButton" to="GameOver" method="_on_quit_button_pressed"]
