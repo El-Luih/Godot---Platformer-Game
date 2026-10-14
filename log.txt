@@ -77,4 +77,8 @@
 
 29. Oct 14, 2026 | 12:15 AM - 3:43 AM - Last round of testing. Played through the menu, the level, and the game over screen several times, recorded the two demo videos, and checked the restart and quit buttons. Finished testing at 3:43 AM.
 
-29. Oct 14, 2026 | 3:43 AM - 4:40 AM - Optimized file sizes, created GitHub repository, and comitted everything.
+30. Oct 14, 2026 | 3:43 AM - 4:40 AM - Optimized file sizes, created GitHub repository, and comitted everything.
+
+31. Oct 14, 2026 | 4:40 AM - 5:51 PM - Wrote a video script and made several recording attempts. Uploaderd the video to YouTube as Unlisted.
+
+32. Oct 14, 2026 | 5:51 PM - 5:59 PM - Shared the video link in the proper Teams Channel. Uploaded the assignment report document.

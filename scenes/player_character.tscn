@@ -415,7 +415,6 @@ position = Vector2(0.5, 80)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_tfo3t")
 animation = &"dead"
-frame = 1
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1391027473]
